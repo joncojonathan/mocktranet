@@ -2,9 +2,15 @@ body {
     margin: 0;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
     font-family: "Exo", sans-serif;
     color: #000000;
     background-color: #eeeeee;
+    display: grid;
+    grid-template-areas: 'head head' 
+                         'nav content';
+    grid-template-columns: 200px auto;
+    grid-template-rows: 60px auto;
 
 }
 
@@ -31,12 +37,14 @@ h2 {
 
 div.banner {
     background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
     width: 430px;
     height: 60px;
 
 }
 
 #bgh {
+    grid-area: head;
     background: linear-gradient(-45deg, #1255ff, #45ddd5, #23a6d5);
     background-size: 100% 100%;
     /*animation: gradientBG 5s ease infinite;*/
@@ -49,6 +57,7 @@ div.banner {
 }
 
 .nav {
+    grid-area: nav;
     background: #08083b;
     width: 200px;
     height: 100%;
@@ -79,20 +88,21 @@ a:hover {
 }
 
 .content {
-
-    margin-top: 5%;
-    margin-left: 17%;
-    margin-right: 7%;
+    grid-area: content;
+    overflow: scroll;
+    margin: 1rem 10%;
 }
 
 .profile-cards {
-    display: grid;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
     padding: 0;
-    grid-template-columns: repeat(6, 1fr);
 }
 
 .profile-cards li {
     display: inline-block;
+    flex: 1 0 20%;
     border: 1px solid hsl(0, 0%, 85%);
     border-radius: 3px;
     padding: 5px;
@@ -114,4 +124,33 @@ a:hover {
     text-align: center;
     font-size: 10px;
     color: #000000;
+}
+
+@media (max-width: 768px) {
+    body {
+        grid-template-areas: 'head'
+                             'nav'
+                             'content';
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px auto 1fr;
+    }
+    div.banner {
+        width: 100%;
+        background-size: contain;
+    }
+    .nav {
+        display: inline-block;
+        height: auto;
+        width: 100%;
+        position: relative;
+        margin-top: 0;
+    }
+    .nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .content {
+        margin: 1rem 5%;
+    }
 }
