@@ -39,7 +39,7 @@ div.banner {
 #bgh {
     background: linear-gradient(-45deg, #1255ff, #45ddd5, #23a6d5);
     background-size: 400% 400%;
-    animation: gradientBG 5s ease infinite;
+    animation: gradientBG 65s ease infinite;
 }
 
 .center {
